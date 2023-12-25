@@ -61,7 +61,7 @@ max_date = all_df["order_delivered_customer_date"].max()
  
 with st.sidebar:
     # Menambahkan logo perusahaan
-    st.image("https://github.com/dex-guru/assets/blob/main/chains/43114/chain_43114.svg")
+    st.image(https://github.com/davidbanthony/mega-city-assets/blob/main/Unofficial-Logos/Logo-Chain-Runners.png")
     
     # Mengambil start_date & end_date dari date_input
     start_date, end_date = st.date_input(
