@@ -103,4 +103,4 @@ ax.tick_params(axis='x', labelsize=15)
  
 st.pyplot(fig)
 
-st.caption('Copyright (c) Ari Fansuri')
+st.caption('Copyright (c) Ari Fansuri/Dicoding Course')
