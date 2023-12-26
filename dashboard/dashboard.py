@@ -47,7 +47,7 @@ def create_byscore_df(df):
     
     return byscore_df
 
-all_df = pd.read_csv("dashboard/all_data.csv")
+all_df = pd.read_csv("all_data.csv")
 
 datetime_columns = ["order_purchase_timestamp", "order_delivered_customer_date"]
 all_df.sort_values(by="order_purchase_timestamp", inplace=True)
@@ -61,7 +61,7 @@ max_date = all_df["order_delivered_customer_date"].max()
  
 with st.sidebar:
     # Menambahkan logo perusahaan
-    st.image("https://github.com/dicodingacademy/assets/raw/main/logo.png")
+    st.image("https://github.com/ChromeDevTools/devtools-logo/blob/master/logos/png/devtools-circle-128.png")
     
     # Mengambil start_date & end_date dari date_input
     start_date, end_date = st.date_input(
@@ -75,7 +75,7 @@ main_df = all_df[(all_df["order_purchase_timestamp"] >= str(start_date)) &
 
 daily_orders_df = create_daily_orders_df(main_df)
 sum_order_items_df = create_sum_order_items_df(main_df)
-byage_df = create_byscore_df(main_df)
+byscore_df = create_byscore_df(main_df)
 bystate_df = create_bystate_df(main_df)
 
 st.header('Arfan Collection :sparkles:')
@@ -101,6 +101,25 @@ ax.plot(
 ax.tick_params(axis='y', labelsize=20)
 ax.tick_params(axis='x', labelsize=15)
  
+st.pyplot(fig)
+
+st.subheader("Customer Rating")
+
+fig, ax = plt.subplots(figsize=(20, 10))
+ 
+sns.barplot(
+    y="customer_id", 
+    x="review_score",
+    data=byscore_df.sort_values(by="customer_id", ascending=False),
+    palette=["#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#72BCD4"],
+    ax=ax
+)
+
+ax.set_title("Number of Customer by Rating", loc="center", fontsize=50)
+ax.set_ylabel(None)
+ax.set_xlabel(None)
+ax.tick_params(axis='x', labelsize=35)
+ax.tick_params(axis='y', labelsize=30)
 st.pyplot(fig)
 
 st.caption('Copyright (c) Ari Fansuri/Dicoding Course')
