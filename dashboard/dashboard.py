@@ -100,13 +100,11 @@ ax.plot(
 )
 ax.tick_params(axis='y', labelsize=20)
 ax.tick_params(axis='x', labelsize=15)
- 
 st.pyplot(fig)
 
 st.subheader("Customer Rating")
 
 fig, ax = plt.subplots(figsize=(20, 10))
- 
 sns.barplot(
     y="customer_id", 
     x="review_score",
@@ -114,7 +112,6 @@ sns.barplot(
     palette=["#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#72BCD4"],
     ax=ax
 )
-
 ax.set_title("Number of Customer by Rating", loc="center", fontsize=50)
 ax.set_ylabel(None)
 ax.set_xlabel(None)
